@@ -439,7 +439,7 @@ GAMEPLAY
 <img src="https://img.shields.io/badge/GitHub-000000?style=for-the-badge&logo=github&logoColor=white"/>
 </a>
 
-<a href="https://portfoliosarment.netlify.app/#projects">
+<a href="https://portfoliosarment.netlify.app/">
 <img src="https://img.shields.io/badge/Portfolio-00E5FF?style=for-the-badge&logo=googlechrome&logoColor=black"/>
 </a>
 
