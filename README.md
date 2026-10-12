@@ -401,7 +401,7 @@ GAMEPLAY
 
 <div align="center">
 
-<img src="https://github-readme-activity-graph.vercel.app/graph?username=sarmento777&bg_color=00000000&color=c9d1d9&line=00e5ff&point=ffffff&area=true&hide_border=true&custom_title=SYSTEM%20ACTIVITY" width="100%"/>
+<img src="https://raw.githubusercontent.com/sarmento777/sarmento777/output/activity-graph.svg" alt="GitHub activity over the last 31 days" width="100%"/>
 
 </div>
 
@@ -411,7 +411,7 @@ GAMEPLAY
 
 <div align="center">
 
-<img src="https://github-profile-trophy.vercel.app/?username=sarmento777&theme=algolia&no-frame=true&no-bg=true&margin-w=8&row=1" width="100%"/>
+<img src="https://raw.githubusercontent.com/sarmento777/sarmento777/output/trophies.svg" alt="GitHub profile trophies" width="100%"/>
 
 </div>
 
@@ -421,7 +421,11 @@ GAMEPLAY
 
 <div align="center">
 
-<img src="https://raw.githubusercontent.com/sarmento777/sarmento777/output/github-contribution-grid-snake-dark.svg" alt="GitHub Contribution Snake" width="100%"/>
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/sarmento777/sarmento777/output/github-contribution-grid-snake-dark.svg"/>
+  <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/sarmento777/sarmento777/output/github-contribution-grid-snake.svg"/>
+  <img src="https://raw.githubusercontent.com/sarmento777/sarmento777/output/github-contribution-grid-snake-dark.svg" alt="GitHub Contribution Snake" width="100%"/>
+</picture>
 
 </div>
 
