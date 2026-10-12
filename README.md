@@ -1,4 +1,4 @@
-<div align="center">
+<img width="853" height="530" alt="image" src="https://github.com/user-attachments/assets/613c0d42-91db-4cc1-9893-d8fa9f7b512d" /><div align="center">
 
 <img src="https://capsule-render.vercel.app/api?type=waving&color=0:050505,50:111827,100:00e5ff&height=230&section=header&text=RAFAEL%20SARMENTO&fontSize=44&fontColor=ffffff&fontAlignY=38&desc=DEVELOPER%20%2F%2F%20SYSTEM%20INITIALIZATION&descAlignY=59&descSize=15&animation=fadeIn" width="100%"/>
 
@@ -436,7 +436,7 @@ GAMEPLAY
 <img src="https://img.shields.io/badge/GitHub-000000?style=for-the-badge&logo=github&logoColor=white"/>
 </a>
 
-<a href="https://portfoliosarmento.netlify.app/">
+<a href="https://portfoliosarment.netlify.app/#projects">
 <img src="https://img.shields.io/badge/Portfolio-00E5FF?style=for-the-badge&logo=googlechrome&logoColor=black"/>
 </a>
 
