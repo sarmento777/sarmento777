@@ -1,0 +1,80 @@
+name: Update profile images
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - .github/workflows/profile-images.yml
+      - scripts/activity_graph.py
+  schedule:
+    - cron: '15 9 * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: profile-images
+  cancel-in-progress: false
+
+jobs:
+  generate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: Check out profile repository
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+
+      - name: Generate activity graph
+        env:
+          PROFILE_USER: ${{ github.repository_owner }}
+        run: python3 scripts/activity_graph.py "$PROFILE_USER" dist/activity-graph.svg
+
+      - name: Generate trophies
+        uses: ryo-ma/github-profile-trophy@e3c89df995e92e67cdd4b2acaab9d974583dc1f7
+        with:
+          username: ${{ github.repository_owner }}
+          output_path: dist/trophies.svg
+          theme: algolia
+          token: ${{ github.token }}
+
+      - name: Generate contribution snake
+        uses: Platane/snk/svg-only@d8f6715049803e982ee5ff501b6b9b7d5deeb09b # v3
+        with:
+          github_user_name: ${{ github.repository_owner }}
+          outputs: |
+            dist/github-contribution-grid-snake.svg?color_snake=#00e5ff
+            dist/github-contribution-grid-snake-dark.svg?palette=github-dark&color_snake=#00e5ff
+
+      - name: Validate SVG files
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          import xml.etree.ElementTree as ET
+          for name in ('activity-graph.svg', 'trophies.svg', 'github-contribution-grid-snake.svg', 'github-contribution-grid-snake-dark.svg'):
+              root = ET.parse(Path('dist') / name).getroot()
+              assert root.tag == '{http://www.w3.org/2000/svg}svg', name
+              print('Validated', name)
+          PY
+
+      - name: Publish images to output branch
+        run: |
+          set -euo pipefail
+          publish_dir="$RUNNER_TEMP/profile-output"
+          if git ls-remote --exit-code --heads origin output > /dev/null; then
+            git fetch origin output
+            git worktree add --detach "$publish_dir" FETCH_HEAD
+          else
+            git worktree add --detach "$publish_dir" HEAD
+            git -C "$publish_dir" switch --orphan output
+          fi
+          cp dist/*.svg "$publish_dir/"
+          git -C "$publish_dir" config user.name 'github-actions[bot]'
+          git -C "$publish_dir" config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git -C "$publish_dir" add -- '*.svg'
+          if git -C "$publish_dir" diff --cached --quiet; then
+            echo 'Images are already current.'
+          else
+            git -C "$publish_dir" commit -m 'Update profile images'
+            git -C "$publish_dir" push origin HEAD:output
+          fi
