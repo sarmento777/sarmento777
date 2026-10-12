@@ -11,7 +11,7 @@
 <img src="https://img.shields.io/badge/GITHUB-000000?style=for-the-badge&logo=github&logoColor=white"/>
 </a>
 
-<a href="https://portfoliosarmento.netlify.app/">
+<a href="https://portfoliosarment.netlify.app/">
 <img src="https://img.shields.io/badge/PORTFOLIO-00E5FF?style=for-the-badge&logo=googlechrome&logoColor=black"/>
 </a>
 
